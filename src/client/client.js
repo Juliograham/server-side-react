@@ -2,7 +2,7 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './pages/HomePage';
+import Home from './components/Home';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import Routes from './Routes';
@@ -12,7 +12,7 @@ import { Provider } from 'react-redux';
 import reducers from './reducers';
 
 
-const store = createStore(reducers, window.INITIAL_STATE, applyMiddleware(thunk));
+const store = createStore(reducers, {}, applyMiddleware(thunk));
 
 ReactDOM.hydrate(
     <Provider store={store}>

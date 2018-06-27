@@ -6103,9 +6103,7 @@ var Home = function Home() {
     );
 };
 
-exports.default = {
-    component: Home
-};
+exports.default = Home;
 
 /***/ }),
 /* 159 */
@@ -8259,9 +8257,9 @@ var _reactDom = __webpack_require__(388);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _HomePage = __webpack_require__(158);
+var _Home = __webpack_require__(158);
 
-var _HomePage2 = _interopRequireDefault(_HomePage);
+var _Home2 = _interopRequireDefault(_Home);
 
 var _reactRouterDom = __webpack_require__(401);
 
@@ -8285,7 +8283,7 @@ var _reducers2 = _interopRequireDefault(_reducers);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var store = (0, _redux.createStore)(_reducers2.default, window.INITIAL_STATE, (0, _redux.applyMiddleware)(_reduxThunk2.default)); //Entry point for the client side application
+var store = (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default)); //Entry point for the client side application
 
 
 _reactDom2.default.hydrate(_react2.default.createElement(
@@ -36861,28 +36859,29 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _react = __webpack_require__(6);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HomePage = __webpack_require__(158);
+var _Home = __webpack_require__(158);
 
-var _HomePage2 = _interopRequireDefault(_HomePage);
+var _Home2 = _interopRequireDefault(_Home);
 
-var _UsersListPage = __webpack_require__(433);
+var _UsersList = __webpack_require__(433);
 
-var _UsersListPage2 = _interopRequireDefault(_UsersListPage);
+var _UsersList2 = _interopRequireDefault(_UsersList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = [_extends({}, _HomePage2.default, {
+exports.default = [{
     path: '/',
+    component: _Home2.default,
     exact: true
-}), _extends({}, _UsersListPage2.default, {
-    path: '/users'
-})];
+}, {
+    loadData: _UsersList.loadData,
+    path: '/users',
+    component: _UsersList2.default
+}];
 
 /***/ }),
 /* 433 */
@@ -36967,10 +36966,7 @@ function loadData(store) {
 }
 
 exports.loadData = loadData;
-exports.default = {
-    loadData: loadData,
-    component: (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _actions.fetchUsers })(UsersList)
-};
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _actions.fetchUsers })(UsersList);
 
 /***/ }),
 /* 434 */
